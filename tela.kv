@@ -1,0 +1,311 @@
+#: import FadeTransition kivy.uix.screenmanager.FadeTransition
+
+ScreenManagement:
+	transition: FadeTransition()
+	MainScreen:
+	GerarAmostra:
+	InformarDado:
+	AnotherScreen:
+	AnalisarScreen:
+	Resultado:
+	Sobre:
+
+<MainScreen>:
+	name: "main"
+	BoxLayout:
+	    orientation: 'vertical'
+	    size_hint: 1,1
+	    pos_hint: {'center_x': .5, 'center_y': .5} #
+	    canvas:
+            Color:
+                rgba: 255,255,255, 1
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+#	        Button:
+#	            text: "Next Screen"
+#	            font_size: 50
+#	            on_release: root.start()
+	    BoxLayout:
+	        orientation: 'vertical'
+	        size_hint: .5,.4
+	        spacing:'20sp'
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+	        Button:
+	            text: "Gerar amostra"
+	            font_size: 50
+	            size_hint: .8,.4
+	            pos_hint: {'center_x': .5, 'center_y': .5}
+	            on_release: app.root.current = 'GerarAmostra'
+            Button:
+	            text: "Iniciar Analise"
+	            font_size: 50
+	            size_hint: .8,.4
+	            pos_hint: {'center_x': .5, 'center_y': .5}
+	            on_press: root.Analisar()
+            Button:
+	            text: "Sobre"
+	            font_size: 50
+	            size_hint: .8,.4
+	            pos_hint: {'center_x': .5, 'center_y': .5}
+	            on_press:app.root.current = 'Sobre'
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+
+<GerarAmostra>:
+	name: "GerarAmostra"
+	BoxLayout:
+	    orientation: 'vertical'
+	    size_hint: 1,1
+	    pos_hint: {'center_x': .5, 'center_y': .5} #
+	    canvas:
+            Color:
+                rgba: 255,255,255, 1
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+#	        Button:
+#	            text: "Next Screen"
+#	            font_size: 50
+#	            on_release: root.start()
+	    BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: .8,.4
+	        spacing:'20sp'
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+	        Button:
+	            text: "Gerar amostra"
+	            font_size: 50
+	            size_hint: .8,.4
+	            pos_hint: {'center_x': .5, 'center_y': .5}
+	            on_release: root.start()
+            Button:
+	            text: "Treinar"
+	            font_size: 50
+	            size_hint: .8,.4
+	            pos_hint: {'center_x': .5, 'center_y': .5}
+                on_press: root.treinamento()
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+
+<InformarDado>:
+	name: "InformarDado"
+	BoxLayout:
+	    orientation: 'vertical'
+	    size_hint: 1,1
+	    pos_hint: {'center_x': .5, 'center_y': .5} #
+	    canvas:
+#            Color:
+#                rgba: 255,255,255, 1
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                source: "img/background.png"
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+	        Label:
+	            font_size:'60sp'
+	            text:'A qual número o desenho se refere?'
+	            color:(0,0,0,1)
+#	        Button:
+#	            text: "Next Screen"
+#	            font_size: 50
+#	            on_release: root.start()
+	    BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: .8,.4
+	        spacing:'20sp'
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+	        TextInput:
+	            id: valorReal
+	            font_size:'30sp'
+	            pos_hint: {'center_x': .5, 'center_y': .5}
+	            size_hint:.7,.2
+	        Button:
+	            text: "Confirmar"
+	            font_size: 50
+	            size_hint: .4,.2
+	            pos_hint: {'center_x': .5, 'center_y': .5}
+	            on_release: root.finalizar()
+
+
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+
+<AnotherScreen>:
+	name: "Desenho"
+	Painter
+	BoxLayout:
+	    size_hint:(1,.3)
+	    Button:
+    	    text:"Finalizar desenho"
+    	    font_size: 25
+    	    on_press: root.print_screen()
+
+<AnalisarScreen>:
+	name: "DesenhoAnalizar"
+	Painter
+	BoxLayout:
+	    size_hint:(1,.3)
+	    Button:
+    	    text:"Finalizar desenho"
+    	    font_size: 25
+    	    on_press: root.print_screen()
+
+<treino>:
+    auto_dismiss: True
+    title: u'Mensagem!'
+    size_hint: (.2,.2)
+    Label:
+        font_size: "20sp"
+        text: u'Treino Efetuado!'
+
+
+<Resultado>:
+	name: "Resultado"
+	BoxLayout:
+	    orientation: 'vertical'
+	    size_hint: 1,1
+	    pos_hint: {'center_x': .5, 'center_y': .5} #
+	    canvas:
+            Color:
+                rgba: 255,255,255, 1
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+
+#	        Button:
+#	            text: "Next Screen"
+#	            font_size: 50
+#	            on_release: root.start()
+	    BoxLayout:
+	        orientation: 'vertical'
+	        size_hint: .8,.4
+	        spacing:'20sp'
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+	        Label:
+	            id: valorResultado
+	            font_size:'60sp'
+	            text:'O valor desenhado foi: '
+	            color:(0,0,0,1)
+	        BoxLayout:
+                orientation: 'horizontal'
+                size_hint: .8,.8
+                spacing:'20sp'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+                Button:
+                    text: "Acertei?"
+                    font_size: 50
+                    size_hint: .4,.4
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    on_release: root.acertei()
+                Button:
+                    text: "Errei?"
+                    font_size: 50
+                    size_hint: .4,.4
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    on_release: root.errei()
+
+
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+
+
+<Sobre>:
+	name: "Sobre"
+	BoxLayout:
+	    orientation: 'vertical'
+	    size_hint: 1,1
+	    pos_hint: {'center_x': .5, 'center_y': .5} #
+	    canvas:
+            Color:
+                rgba: 255,255,255, 1
+
+            Rectangle:
+                pos: self.pos
+                size: self.size
+                
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+
+	        canvas:
+                Rectangle:
+                    pos: self.x+500,self.y
+
+                    size: (300,80)
+                    source: "img/devLogo.png"
+
+	    BoxLayout:
+	        orientation: 'vertical'
+	        size_hint: .8,.8
+#	        spacing:'20sp'
+	        pos_hint: {'center_x': .5, 'center_y': .5}
+
+	        ScrollView:
+                orientation: 'vertical'
+                size_hint: None,1
+                height:'150sp'
+                width:'900sp'
+                spacing: '30sp'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+
+                Label:
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    text:'Desenvolvido por: Ronald Lopes\n\nDisciplina: Inteligência Computacional\n\n Este programa visa simular o reconhecimento de dígitos por meio do algoritmo de redes neurais conhecido como perceptron, para isso a aplicação utiliza o OpenCV para tratar a imagem e gerar o vetor de treino/análise e depois repassa para o algoritmo para efetuar o treino ou o reconhecimento do dígito. É válido ressaltar que o código ainda encontra-se em fase de desenvolvimento e melhorias ainda devem ser realizadas.'
+                    color:0,0,0,1
+                    font_size: '40sp'
+                    size_hint:1,None
+                    text_size: self.width,None
+                    height: self.texture_size[1]
+                    halign:'center'
+#                    pos_hint: {'center_x': .6, 'center_y': .5}
+
+
+	        BoxLayout:
+                orientation: 'horizontal'
+                size_hint: .8,.4
+                spacing:'20sp'
+                pos_hint: {'center_x': .5, 'center_y': .5}
+
+                Button:
+                    text: "Voltar"
+                    font_size: 50
+                    size_hint: .4,1
+                    pos_hint: {'center_x': .5, 'center_y': .5}
+                    on_release: app.root.current = 'main'
+
+
+        BoxLayout:
+	        orientation: 'horizontal'
+	        size_hint: 1,.3
+	        pos_hint: {'center_x': .5, 'center_y': .5}

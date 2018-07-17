@@ -1,0 +1,17 @@
+altgraph==0.15
+certifi==2018.4.16
+chardet==3.0.4
+Cython==0.28.3
+docutils==0.14
+future==0.16.0
+idna==2.7
+Kivy==1.10.0
+Kivy-Garden==0.1.4
+macholib==1.9
+numpy==1.14.5
+opencv-python==3.4.1.15
+pefile==2017.11.5
+pygame==1.9.3
+Pygments==2.2.0
+requests==2.19.1
+urllib3==1.23
