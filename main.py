@@ -10,7 +10,7 @@ from kivy.graphics import Line
 
 from Controller.dbClass import TreinamentoDB
 from Controller.moduleViCompGenerator import ModuleViCompGenerator
-from Controller.perceptron import Perceptron
+from Controller.perceptronV2 import PerceptronV2
 
 Window.size = (1280,720)
 
@@ -45,7 +45,7 @@ class GerarAmostra(Screen):
     def treinamento(self):
         app = App.get_running_app()
         # app.perceptron.gerarSinapses()
-        app.perceptron.start()
+        app.perceptron.preparaEtreina()
         treino().open()
 class AnalisarScreen(Screen):
     def print_screen(self):
@@ -65,9 +65,10 @@ class AnalisarScreen(Screen):
         Window.size = (1280,720)
         pincel = self.buscaWidget('pincel')
         pincel.clearScreen()
+        app.vcGenerator.vector.insert(0, 1)
         print(app.vcGenerator.vector)
         app = App.get_running_app()
-        app.resultado= app.resultado + str(app.perceptron.reconhecimento(app.vcGenerator.vector))
+        app.resultado= app.resultado + str(app.perceptron.analisaVetor(app.vcGenerator.vector))
         self.manager.current = 'Resultado'
 
     def buscaWidget(self, idSearch=""):  # busca widgets que nao estao inseridos em self.ids por serem novos
@@ -100,7 +101,8 @@ class InformarDado(Screen):
         dados=[(1,int(self.ids.valorReal.text),str(app.vcGenerator.vector))]
         bd.registraTreinamento(dados)
         # app.perceptron.start()
-        app.perceptron.treinaNovo(app.vcGenerator.vector,int(self.ids.valorReal.text))
+        amostra = {'ValorReal': int(self.ids.valorReal.text), 'Dados':app.vcGenerator.vector}
+        app.perceptron.treinaAmostraUnica(amostra)
         self.manager.current = 'main'
 
 class ScreenManagement(ScreenManager):
@@ -128,6 +130,7 @@ class AnotherScreen(Screen):
         Window.size = (1280,720)
         pincel = self.buscaWidget('pincel')
         pincel.clearScreen()
+        app.vcGenerator.vector.insert(0,1)
         print(app.vcGenerator.vector)
         self.manager.current = 'InformarDado'
 
@@ -147,7 +150,7 @@ class MainApp(App):
     def build(self):
         self.title= 'RNA Perceptron'
         self.dados=None
-        self.perceptron = Perceptron()
+        self.perceptron = PerceptronV2()
         self.vcGenerator= None
         self.resultado= 'O valor desenhado foi: '
         return presentation
