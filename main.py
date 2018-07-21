@@ -1,3 +1,13 @@
+'''
+        --Classe Principal--
+Desenvolvido por: Ronald Lopes
+Data: 15/07/2018
+Versão: 1.0
+
+Status:
+    >
+
+'''
 from kivy.app import App
 # kivy.require("1.8.0")
 from kivy.clock import Clock
