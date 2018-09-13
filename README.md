@@ -1,7 +1,7 @@
 # Redes-Neurais---Perceptron
 Trabalho da disciplina de Inteligência Computacional envolvendo o Algoritmo Perceptron de Redes Neurais de apenas uma camada. Para instalar as bibliotecas necessárias crie um ambiente virtual pelo Virtualenv com Python 3.5 e execute o seguinte comando:
 
-#Instalação
+# Instalação
 ```
 pip install -r requirements.txt
 ```
