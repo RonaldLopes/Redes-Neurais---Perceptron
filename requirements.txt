@@ -12,6 +12,6 @@ numpy==1.14.5
 opencv-python==3.4.1.15
 pefile==2017.11.5
 pygame==1.9.3
-Pygments==2.2.0
+Pygments==2.7.4
 requests==2.19.1
 urllib3==1.23
